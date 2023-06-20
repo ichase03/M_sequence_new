@@ -1,0 +1,7 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Code/vivado/M_sequence/M_sequence.srcs/sim_1/new/tb_sincos_TOP.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_sincos_TOP
+ERROR: [VRFC 10-4982] syntax error near '(' [D:/Code/vivado/M_sequence/M_sequence.srcs/sim_1/new/tb_sincos_TOP.v:42]
+ERROR: [VRFC 10-4982] syntax error near 'end' [D:/Code/vivado/M_sequence/M_sequence.srcs/sim_1/new/tb_sincos_TOP.v:62]
+ERROR: [VRFC 10-8549] Verilog 2000 keyword 'end' used in incorrect context [D:/Code/vivado/M_sequence/M_sequence.srcs/sim_1/new/tb_sincos_TOP.v:62]
+ERROR: [VRFC 10-2939] 'sincos_TOP' is an unknown type [D:/Code/vivado/M_sequence/M_sequence.srcs/sim_1/new/tb_sincos_TOP.v:38]
+ERROR: [VRFC 10-8530] module 'tb_sincos_TOP' is ignored due to previous errors [D:/Code/vivado/M_sequence/M_sequence.srcs/sim_1/new/tb_sincos_TOP.v:23]
