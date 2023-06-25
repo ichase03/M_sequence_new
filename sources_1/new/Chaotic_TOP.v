@@ -21,99 +21,120 @@
 
 
 module Chaotic_TOP #(
-    parameter DATA_WIDTH = 64  //数据位宽须与 Floating-point IP 数据位宽匹配
+    parameter DATA_WIDTH = 'd64,                //数据位宽须与 Floating-point IP 数据位宽匹配
+    parameter Chaotic_System_Cycle = 'd242,     // 混沌系统计算一次的周期
+    parameter tao = 'h3FD3333333333333,         // 混沌系统参数
+    parameter k0  = 'h3FD3333333333333,
+    parameter k1  = 'h3FD3333333333333,
+    parameter k2  = 'h3FD3333333333333
 )(
     input clk,
     input rst_n,
-
-    input signed [DATA_WIDTH-1:0] a,
-    input signed [DATA_WIDTH-1:0] b,
-    input signed [DATA_WIDTH-1:0] c,
-    input signed [DATA_WIDTH-1:0] d,
-    input signed [DATA_WIDTH-1:0] e,
-    input signed [DATA_WIDTH-1:0] tao,
-    input signed [DATA_WIDTH-1:0] k0,
-    input signed [DATA_WIDTH-1:0] k1,
-    input signed [DATA_WIDTH-1:0] k2,
-
-    input signed [DATA_WIDTH-1:0] xn_initial, //混沌初值
-    input signed [DATA_WIDTH-1:0] yn_initial,
-    input signed [DATA_WIDTH-1:0] zn_initial,
-
-    input calcu_ctrl, //控制混沌方程组迭代，此信号的上升沿做一次状态迭代运算，busy信号高有效期间输入的上升沿无效（上升沿间隔需大于混沌方程组迭代周期Latency）
-    output busy, //忙信号，方程组迭代运算未完成，高有效，期间拉高calcu_ctrl无效
-
-    output n1_valid,
-    output signed [DATA_WIDTH-1:0] xn1, //状态输出（不包含混沌初值）
+    output n1_valid,                    // 混沌系统输出有效信号
+    output signed [DATA_WIDTH-1:0] xn1, // 混沌系统次态（状态输出值）
     output signed [DATA_WIDTH-1:0] yn1,
-    output signed [DATA_WIDTH-1:0] zn1
+    output signed [DATA_WIDTH-1:0] zn1,
+    output reg [7:0] xyz_ram_w_addr
 );
 
-//控制信号打拍用于捕获边沿
-reg calcu_ctrl_dly1;
+// ------------------------------------------------------------
+// 定义区
+wire signed [DATA_WIDTH-1:0] a; // 混沌系统可变参数值a b c d e
+wire signed [DATA_WIDTH-1:0] b;
+wire signed [DATA_WIDTH-1:0] c;
+wire signed [DATA_WIDTH-1:0] d;
+wire signed [DATA_WIDTH-1:0] e;
+reg n_valid;                    // 混沌系统输入有效信号
+wire signed [DATA_WIDTH-1:0] xn; // 混沌系统现态（状态输入值）
+wire signed [DATA_WIDTH-1:0] yn;
+wire signed [DATA_WIDTH-1:0] zn;
+reg [7:0] para_rom_addra;       // rom/ram读地址
+// reg [7:0] xyz_ram_w_addr;       // ram写地址
+reg rom_flog;                   // 两个标志位，方便调试
+reg ram_flog;                   
 
-always @(posedge clk or negedge rst_n)begin
-    if(rst_n == 1'b0)begin
-        calcu_ctrl_dly1 <= 1'b0;
+// --------------------------------------------------------------
+//功能区
+
+// 控制混沌系统输入有效信号n_valid
+always@(posedge clk or negedge rst_n)
+begin
+    if(!rst_n) begin
+        n_valid = 'd0;
     end
     else begin
-        calcu_ctrl_dly1 <= calcu_ctrl;
+        n_valid = 'd1;
     end
 end
 
-//下一个状态更新值缓存，buf寄存器在复位时赋混沌初值，在方程组一次迭代完成后立即更新为迭代后的状态值
-reg signed [DATA_WIDTH-1:0] xn_buf;
-reg signed [DATA_WIDTH-1:0] yn_buf;
-reg signed [DATA_WIDTH-1:0] zn_buf;
-
-always @(posedge clk or negedge rst_n)begin
-    if(rst_n == 1'b0)begin
-        xn_buf <= xn_initial;
-        yn_buf <= yn_initial;
-        zn_buf <= zn_initial;
+// 控制ROM/RAM读地址
+    // 混沌系统输入有效时，para_rom_addra自动加1，每244时钟循环一次
+always@( posedge clk or negedge rst_n)
+begin
+    if(!rst_n)  begin
+        para_rom_addra <= 'd0;
+        rom_flog <= 'd0;
     end
-    else begin
-        if(n1_valid == 1'b1)begin
-            xn_buf <= xn1;
-            yn_buf <= yn1;
-            zn_buf <= zn1;
+    else if(n_valid) begin
+        if (para_rom_addra == Chaotic_System_Cycle ) begin
+            para_rom_addra <= 'd0;
+            rom_flog <= 'd1;
         end
         else begin
-            xn_buf <= xn_buf;
-            yn_buf <= yn_buf;
-            zn_buf <= zn_buf;
+            para_rom_addra <= para_rom_addra + 'd1;
+            rom_flog <= 'd0;
         end
-    end
-end
-
-// 输入有效信号
-reg n_valid;
-reg signed [DATA_WIDTH-1:0] xn;
-reg signed [DATA_WIDTH-1:0] yn;
-reg signed [DATA_WIDTH-1:0] zn;
-
-always @(posedge clk or negedge rst_n)begin
-    if(rst_n == 1'b0)begin
-        n_valid <= 1'b0;
-        xn <= 32'd0;
-        yn <= 32'd0;
-        zn <= 32'd0;
     end
     else begin
-        if(calcu_ctrl_dly1 == 1'b0 && calcu_ctrl == 1'b1 && busy == 1'b0)begin//此处的敏感条件为，使能信号上升沿在忙信号低无效时出现
-            n_valid <= 1'b1;
-            xn <= xn_buf;
-            yn <= yn_buf;
-            zn <= zn_buf;
-        end
-        else begin
-            n_valid <= 1'b0;
-            xn <= xn;
-            yn <= yn;
-            zn <= zn;
-        end
+        para_rom_addra <= para_rom_addra;
+        rom_flog <= 'd0;
     end
 end
+
+// 控制RAM写地址
+//      混沌系统输出有效时，将输出写入到ram中， xyz_ram_w_addr自动加1，每244时钟循环一次
+always@( posedge clk or negedge rst_n)
+begin
+    if(!rst_n)  begin
+        xyz_ram_w_addr <= 'd0;
+        ram_flog <= 'd0;
+    end
+    else if(n1_valid) begin
+        if (xyz_ram_w_addr == Chaotic_System_Cycle ) begin
+            xyz_ram_w_addr <= 'd0;
+            ram_flog <= 'd1;
+        end
+        else begin
+            xyz_ram_w_addr <= xyz_ram_w_addr + 'd1;
+            ram_flog <= 'd0;
+        end
+    end
+    else begin
+        xyz_ram_w_addr <= xyz_ram_w_addr;
+        ram_flog <= 'd0;
+    end
+end
+
+// 例化存储混沌方程参数的ROM，并赋值给a b c d e
+    // 例化存储混沌方程参数的ROM
+IP_ROM para_rom (
+    .clka(clk),    // input wire clka
+    .addra(para_rom_addra),  // input wire [7 : 0] addra
+    .douta({a,b,c,d,e})  // output wire [319 : 0] douta
+);
+
+
+// 例化存储混沌方程状态值x y z的RAM 
+IP_RAM xyz_ram (
+    .clka(clk),    // input wire clka
+    .wea(n1_valid),      // input wire [0 : 0] wea
+    .addra(xyz_ram_w_addr),  // input wire [7 : 0] addra
+    .dina({xn1,yn1,zn1}),    // input wire [191 : 0] dina
+
+    .clkb(clk),    // input wire clkb
+    .addrb(para_rom_addra),  // input wire [7 : 0] addrb  ram和rom共用一个读地址
+    .doutb({xn,yn,zn})  // output wire [191 : 0] doutb
+);
 
 
 Chaotic_Equations #(
@@ -140,8 +161,8 @@ Chaotic_Equations #(
     .n1_valid(n1_valid),// 输出有效信号
     .xn1(xn1), //混沌次态
     .yn1(yn1),
-    .zn1(zn1),
-    .busy(busy) //忙信号，方程组运算未完成，高有效
+    .zn1(zn1)
+    // .busy(busy) //忙信号，方程组运算未完成，高有效
 );
 
 endmodule

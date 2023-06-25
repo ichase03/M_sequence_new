@@ -73,13 +73,14 @@ module Chaotic_equation_x
 
     wire sin_data_valid;                    // 4
     wire signed [DATA_WIDTH-1:0] sin_data;
+    wire signed [DATA_WIDTH-1:0] c_dly;
     
     wire xn1_temp_valid;                    // 5
     wire signed [DATA_WIDTH-1:0] xn1_temp;
 
     // 功能区
     // -------------------------------------------------
-    // step1 并行计算a*yn  e*yn   zn*zn  k1*zn+k0  latency26
+    // step1 并行计算a*yn  e*yn   zn*zn  k1*zn+k0   latency26
     // 其中乘加模块k1*zn+k0延时最长，最后完成，故step2时，使用k0k1zn_valid作为输入有效信号
     // 1.1 计算a*yn    15 latency
     IP_float64_multiply a_MUL_yn (
@@ -100,18 +101,6 @@ module Chaotic_equation_x
         .Q({dly_a_yn_valid, dly_a_yn})      // output wire [64 : 0] Q
     );
 
-    // always@(posedge clk or negedge rst_n)begin
-    //     if(rst_n == 1'b0)begin
-    //         reg_a_yn <= 'd0;
-    //     end
-    //     else if (a_yn_valid) begin
-    //         reg_a_yn <= a_yn;
-    //     end
-    //     else begin
-    //         reg_a_yn <= reg_a_yn;
-    //     end
-    // end
-
     // 1.2 计算e*yn  15latency  输出值在step3中使用
     IP_float64_multiply e_MUL_yn (
         .aclk(clk),                                  // input wire aclk
@@ -130,18 +119,6 @@ module Chaotic_equation_x
         .CLK(clk),  // input wire CLK
         .Q({dly_e_yn_valid, dly_e_yn})      // output wire [64 : 0] Q
     );
-
-    // always@(posedge clk or negedge rst_n)begin
-    //     if(rst_n == 1'b0)begin
-    //         reg_e_yn <= 'd0;
-    //     end
-    //     else if (e_yn_valid) begin
-    //         reg_e_yn <= e_yn;
-    //     end
-    //     else begin
-    //         reg_e_yn <= reg_e_yn;
-    //     end
-    // end
 
     // 1.3 计算zn*zn    （输出值在step2中使用）
     IP_float64_multiply zn_MUL_zn (
@@ -162,18 +139,6 @@ module Chaotic_equation_x
         .CLK(clk),  // input wire CLK
         .Q({dly_zn_zn_valid, dly_zn_zn})      // output wire [64 : 0] Q
     );
-
-    // always@(posedge clk or negedge rst_n)begin
-    //     if(rst_n == 1'b0)begin
-    //         reg_zn_zn <= 'd0;
-    //     end
-    //     else if (zn_zn_valid) begin
-    //         reg_zn_zn <= zn_zn;
-    //     end
-    //     else begin
-    //         reg_zn_zn <= reg_zn_zn;
-    //     end
-    // end
 
     // 1.4 计算k1*zn+k0  26latency  (输出值在step2中计算)
     // 乘加模块k1*zn+k0延时最长，最后完成，故step2时，使用k0k1zn_valid作为输入有效信号
@@ -246,12 +211,20 @@ module Chaotic_equation_x
     // step4 end --------
 
     //---------------------
-    // step5 计算xn1
+    // step5 计算xn1 = (a_yn_dly) + (c_dly) * (sin)
+    // 注意要对参数c单独做延时，以免错位
+    IP_shift_register para_c_dly (
+        .A(8'd212),      // input wire [7 : 0] A    212 = 26+26+15+149 -1 -1 -1-1-1
+        .D({0,c}),      // input wire [64 : 0] D
+        .CLK(clk),  // input wire CLK
+        .Q({0, c_dly})      // output wire [64 : 0] Q
+    );
+
     IP_float64_multiply_add calculate_xn1 (
         .aclk(clk ),                                  // input wire aclk
         .aresetn(rst_n ),                            // input wire aresetn
         .s_axis_a_tvalid(sin_data_valid),            // input wire s_axis_a_tvalid
-        .s_axis_a_tdata(c),              // input wire [63 : 0] s_axis_a_tdata
+        .s_axis_a_tdata(c_dly),              // input wire [63 : 0] s_axis_a_tdata
         .s_axis_b_tvalid(sin_data_valid),            // input wire s_axis_b_tvalid
         .s_axis_b_tdata(sin_data),              // input wire [63 : 0] s_axis_b_tdata
         .s_axis_c_tvalid(dly_a_yn_valid),            // input wire s_axis_c_tvalid

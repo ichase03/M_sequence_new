@@ -26,8 +26,8 @@ module Chaotic_Equations #(
     output n1_valid,
     output signed [DATA_WIDTH-1:0] xn1, //混沌次态
     output signed [DATA_WIDTH-1:0] yn1,
-    output signed [DATA_WIDTH-1:0] zn1,
-    output reg busy  //忙信号，方程组运算未完成，高有效
+    output signed [DATA_WIDTH-1:0] zn1
+    // output reg busy  //忙信号，方程组运算未完成，高有效
 );
 
 // 定义区--------------------------------------------------
@@ -37,24 +37,24 @@ wire zn1_valid;
 
 assign n1_valid = xn1_valid && yn1_valid && zn1_valid;
 
-// busy忙信号产生逻辑
-//忙信号产生，由于状态方程对过去状态存在依赖，即必须完成前一次迭代才能开始下一次迭代，故未采用流水线。忙信号产生方式
-always @(posedge clk or negedge rst_n)begin
-    if(rst_n == 1'b0)begin
-        busy <= 1'b0;
-    end
-    else begin
-        if(n_valid == 1'b1 && busy == 1'b0)begin
-            busy <= 1'b1;
-        end
-        else if(n1_valid == 1'b1 && busy == 1'b1)begin
-            busy <= 1'b0;
-        end
-        else begin
-            busy <= busy;
-        end
-    end
-end
+// // busy忙信号产生逻辑
+// //忙信号产生，由于状态方程对过去状态存在依赖，即必须完成前一次迭代才能开始下一次迭代，故未采用流水线。忙信号产生方式
+// always @(posedge clk or negedge rst_n)begin
+//     if(rst_n == 1'b0)begin
+//         busy <= 1'b0;
+//     end
+//     else begin
+//         if(n_valid == 1'b1 && busy == 1'b0)begin
+//             busy <= 1'b1;
+//         end
+//         else if(n1_valid == 1'b1 && busy == 1'b1)begin
+//             busy <= 1'b0;
+//         end
+//         else begin
+//             busy <= busy;
+//         end
+//     end
+// end
 
 
 // 混沌方程x_n1

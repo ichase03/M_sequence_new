@@ -4,6 +4,8 @@
 π : 32'h40490FDA
 2π: 32'h40C90FDA  64'h401921FB54442EEA
 */
+
+// 计算sin/cos值
 module sincos_TOP #(
     parameter DATA_WIDTH = 64, //数据位宽须与 Floating-point IP 数据位宽匹配
     parameter CORDIC_PHASE_WIDTH = 32  //数据位宽须与 CORDIC IP 数据位宽匹配

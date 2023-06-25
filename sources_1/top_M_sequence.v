@@ -75,7 +75,7 @@ generate for (i_mseq = 0 ;i_mseq < OUTPUT_DATA_NUM ;i_mseq = i_mseq + 1 ) begin:
       .dout  (MSEQ_FD[i_mseq]                       ),
       .valid (MSEQ_FD_vld[i_mseq]                   ) 
     );
-  
+    
 end endgenerate
 
 //! step1-2: 读信号的延迟
