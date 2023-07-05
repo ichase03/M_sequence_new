@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_ChaoisSignal_OUT_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_ChaoisSignal_OUT" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="16.335001 us"></ZoomEndTime>
+      <Cursor1Time time="5.575000 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="446"></NameColumnWidth>
+      <ValueColumnWidth column_width="218"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="9" />
+   <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/ram_flog" type="logic">
+      <obj_property name="ElementShortName">ram_flog</obj_property>
+      <obj_property name="ObjectShortName">ram_flog</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/para_rom_addra" type="array">
+      <obj_property name="ElementShortName">para_rom_addra[7:0]</obj_property>
+      <obj_property name="ObjectShortName">para_rom_addra[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/rom_flog" type="logic">
+      <obj_property name="ElementShortName">rom_flog</obj_property>
+      <obj_property name="ObjectShortName">rom_flog</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ChaoisSignal_OUT/xn1" type="array">
+      <obj_property name="ElementShortName">xn1[63:0]</obj_property>
+      <obj_property name="ObjectShortName">xn1[63:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">53</obj_property>
+      <obj_property name="radix_otherWidth">11</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ChaoisSignal_OUT/yn1" type="array">
+      <obj_property name="ElementShortName">yn1[63:0]</obj_property>
+      <obj_property name="ObjectShortName">yn1[63:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">53</obj_property>
+      <obj_property name="radix_otherWidth">11</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ChaoisSignal_OUT/zn1" type="array">
+      <obj_property name="ElementShortName">zn1[63:0]</obj_property>
+      <obj_property name="ObjectShortName">zn1[63:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">53</obj_property>
+      <obj_property name="radix_otherWidth">11</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/xyz_ram_w_addr" type="array">
+      <obj_property name="ElementShortName">xyz_ram_w_addr[7:0]</obj_property>
+      <obj_property name="ObjectShortName">xyz_ram_w_addr[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="group1135" type="group">
+      <obj_property name="label">XN1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/a" type="array">
+         <obj_property name="ElementShortName">a[63:0]</obj_property>
+         <obj_property name="ObjectShortName">a[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/c" type="array">
+         <obj_property name="ElementShortName">c[63:0]</obj_property>
+         <obj_property name="ObjectShortName">c[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/e" type="array">
+         <obj_property name="ElementShortName">e[63:0]</obj_property>
+         <obj_property name="ObjectShortName">e[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/k0" type="array">
+         <obj_property name="ElementShortName">k0[63:0]</obj_property>
+         <obj_property name="ObjectShortName">k0[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/k1" type="array">
+         <obj_property name="ElementShortName">k1[63:0]</obj_property>
+         <obj_property name="ObjectShortName">k1[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/k2" type="array">
+         <obj_property name="ElementShortName">k2[63:0]</obj_property>
+         <obj_property name="ObjectShortName">k2[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/yn_valid" type="logic">
+         <obj_property name="ElementShortName">yn_valid</obj_property>
+         <obj_property name="ObjectShortName">yn_valid</obj_property>
+         <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/yn" type="array">
+         <obj_property name="ElementShortName">yn[63:0]</obj_property>
+         <obj_property name="ObjectShortName">yn[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/zn_valid" type="logic">
+         <obj_property name="ElementShortName">zn_valid</obj_property>
+         <obj_property name="ObjectShortName">zn_valid</obj_property>
+         <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/zn" type="array">
+         <obj_property name="ElementShortName">zn[63:0]</obj_property>
+         <obj_property name="ObjectShortName">zn[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/sin_data_valid" type="logic">
+         <obj_property name="ElementShortName">sin_data_valid</obj_property>
+         <obj_property name="ObjectShortName">sin_data_valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/sin_data" type="array">
+         <obj_property name="ElementShortName">sin_data[63:0]</obj_property>
+         <obj_property name="ObjectShortName">sin_data[63:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/a_yn_valid" type="logic">
+         <obj_property name="ElementShortName">a_yn_valid</obj_property>
+         <obj_property name="ObjectShortName">a_yn_valid</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/a_yn" type="array">
+         <obj_property name="ElementShortName">a_yn[63:0]</obj_property>
+         <obj_property name="ObjectShortName">a_yn[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/e_yn_valid" type="logic">
+         <obj_property name="ElementShortName">e_yn_valid</obj_property>
+         <obj_property name="ObjectShortName">e_yn_valid</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/e_yn" type="array">
+         <obj_property name="ElementShortName">e_yn[63:0]</obj_property>
+         <obj_property name="ObjectShortName">e_yn[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/zn_zn_valid" type="logic">
+         <obj_property name="ElementShortName">zn_zn_valid</obj_property>
+         <obj_property name="ObjectShortName">zn_zn_valid</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/zn_zn" type="array">
+         <obj_property name="ElementShortName">zn_zn[63:0]</obj_property>
+         <obj_property name="ObjectShortName">zn_zn[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/dly_zn_zn_valid" type="logic">
+         <obj_property name="ElementShortName">dly_zn_zn_valid</obj_property>
+         <obj_property name="ObjectShortName">dly_zn_zn_valid</obj_property>
+         <obj_property name="CustomSignalColor">#00FF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/dly_zn_zn" type="array">
+         <obj_property name="ElementShortName">dly_zn_zn[63:0]</obj_property>
+         <obj_property name="ObjectShortName">dly_zn_zn[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/k0k1zn_valid" type="logic">
+         <obj_property name="ElementShortName">k0k1zn_valid</obj_property>
+         <obj_property name="ObjectShortName">k0k1zn_valid</obj_property>
+         <obj_property name="CustomSignalColor">#00FF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/k0k1zn" type="array">
+         <obj_property name="ElementShortName">k0k1zn[63:0]</obj_property>
+         <obj_property name="ObjectShortName">k0k1zn[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/k0k1k2zn_valid" type="logic">
+         <obj_property name="ElementShortName">k0k1k2zn_valid</obj_property>
+         <obj_property name="ObjectShortName">k0k1k2zn_valid</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/k0k1k2zn" type="array">
+         <obj_property name="ElementShortName">k0k1k2zn[63:0]</obj_property>
+         <obj_property name="ObjectShortName">k0k1k2zn[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/dly_e_yn_valid" type="logic">
+         <obj_property name="ElementShortName">dly_e_yn_valid</obj_property>
+         <obj_property name="ObjectShortName">dly_e_yn_valid</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/dly_e_yn" type="array">
+         <obj_property name="ElementShortName">dly_e_yn[63:0]</obj_property>
+         <obj_property name="ObjectShortName">dly_e_yn[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/ek0k1k2znyn_valid" type="logic">
+         <obj_property name="ElementShortName">ek0k1k2znyn_valid</obj_property>
+         <obj_property name="ObjectShortName">ek0k1k2znyn_valid</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/ek0k1k2znyn" type="array">
+         <obj_property name="ElementShortName">ek0k1k2znyn[63:0]</obj_property>
+         <obj_property name="ObjectShortName">ek0k1k2znyn[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/sin_data_valid" type="logic">
+         <obj_property name="ElementShortName">sin_data_valid</obj_property>
+         <obj_property name="ObjectShortName">sin_data_valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/sin_data" type="array">
+         <obj_property name="ElementShortName">sin_data[63:0]</obj_property>
+         <obj_property name="ObjectShortName">sin_data[63:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/c_dly" type="array">
+         <obj_property name="ElementShortName">c_dly[63:0]</obj_property>
+         <obj_property name="ObjectShortName">c_dly[63:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/dly_a_yn_valid" type="logic">
+         <obj_property name="ElementShortName">dly_a_yn_valid</obj_property>
+         <obj_property name="ObjectShortName">dly_a_yn_valid</obj_property>
+         <obj_property name="CustomSignalColor">#00FF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/dly_a_yn" type="array">
+         <obj_property name="ElementShortName">dly_a_yn[63:0]</obj_property>
+         <obj_property name="ObjectShortName">dly_a_yn[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/xn1_temp_valid" type="logic">
+         <obj_property name="ElementShortName">xn1_temp_valid</obj_property>
+         <obj_property name="ObjectShortName">xn1_temp_valid</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/x_equation/xn1_temp" type="array">
+         <obj_property name="ElementShortName">xn1_temp[63:0]</obj_property>
+         <obj_property name="ObjectShortName">xn1_temp[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group1158" type="group">
+      <obj_property name="label">YN1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/y_equation/b" type="array">
+         <obj_property name="ElementShortName">b[63:0]</obj_property>
+         <obj_property name="ObjectShortName">b[63:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/y_equation/d" type="array">
+         <obj_property name="ElementShortName">d[63:0]</obj_property>
+         <obj_property name="ObjectShortName">d[63:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/y_equation/xn_valid" type="logic">
+         <obj_property name="ElementShortName">xn_valid</obj_property>
+         <obj_property name="ObjectShortName">xn_valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/y_equation/xn" type="array">
+         <obj_property name="ElementShortName">xn[63:0]</obj_property>
+         <obj_property name="ObjectShortName">xn[63:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/y_equation/yn_valid" type="logic">
+         <obj_property name="ElementShortName">yn_valid</obj_property>
+         <obj_property name="ObjectShortName">yn_valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/y_equation/yn" type="array">
+         <obj_property name="ElementShortName">yn[63:0]</obj_property>
+         <obj_property name="ObjectShortName">yn[63:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/y_equation/zn_valid" type="logic">
+         <obj_property name="ElementShortName">zn_valid</obj_property>
+         <obj_property name="ObjectShortName">zn_valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/y_equation/zn" type="array">
+         <obj_property name="ElementShortName">zn[63:0]</obj_property>
+         <obj_property name="ObjectShortName">zn[63:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/y_equation/b_xn_valid" type="logic">
+         <obj_property name="ElementShortName">b_xn_valid</obj_property>
+         <obj_property name="ObjectShortName">b_xn_valid</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/y_equation/b_xn" type="array">
+         <obj_property name="ElementShortName">b_xn[63:0]</obj_property>
+         <obj_property name="ObjectShortName">b_xn[63:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/y_equation/d_yn_valid" type="logic">
+         <obj_property name="ElementShortName">d_yn_valid</obj_property>
+         <obj_property name="ObjectShortName">d_yn_valid</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/y_equation/d_yn" type="array">
+         <obj_property name="ElementShortName">d_yn[63:0]</obj_property>
+         <obj_property name="ObjectShortName">d_yn[63:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/y_equation/cos_zn_valid" type="logic">
+         <obj_property name="ElementShortName">cos_zn_valid</obj_property>
+         <obj_property name="ObjectShortName">cos_zn_valid</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/y_equation/cos_zn" type="array">
+         <obj_property name="ElementShortName">cos_zn[63:0]</obj_property>
+         <obj_property name="ObjectShortName">cos_zn[63:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/y_equation/dly_b_xn_valid" type="logic">
+         <obj_property name="ElementShortName">dly_b_xn_valid</obj_property>
+         <obj_property name="ObjectShortName">dly_b_xn_valid</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/y_equation/dly_b_xn" type="array">
+         <obj_property name="ElementShortName">dly_b_xn[63:0]</obj_property>
+         <obj_property name="ObjectShortName">dly_b_xn[63:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/y_equation/dly_d_yn_valid" type="logic">
+         <obj_property name="ElementShortName">dly_d_yn_valid</obj_property>
+         <obj_property name="ObjectShortName">dly_d_yn_valid</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/y_equation/dly_d_yn" type="array">
+         <obj_property name="ElementShortName">dly_d_yn[63:0]</obj_property>
+         <obj_property name="ObjectShortName">dly_d_yn[63:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/y_equation/yn1_temp_valid" type="logic">
+         <obj_property name="ElementShortName">yn1_temp_valid</obj_property>
+         <obj_property name="ObjectShortName">yn1_temp_valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/y_equation/yn1_temp" type="array">
+         <obj_property name="ElementShortName">yn1_temp[63:0]</obj_property>
+         <obj_property name="ObjectShortName">yn1_temp[63:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/y_equation/yn1_valid" type="logic">
+         <obj_property name="ElementShortName">yn1_valid</obj_property>
+         <obj_property name="ObjectShortName">yn1_valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_ChaoisSignal_OUT/Chaotic_TOP_system/u_Chaotic_equations/y_equation/yn1" type="array">
+         <obj_property name="ElementShortName">yn1[63:0]</obj_property>
+         <obj_property name="ObjectShortName">yn1[63:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">53</obj_property>
+         <obj_property name="radix_otherWidth">11</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

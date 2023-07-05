@@ -55,7 +55,7 @@ module Chaotic_equation_y#(
     wire signed [DATA_WIDTH-1:0] cos_zn;
     wire yn1_temp_valid;
     wire signed [DATA_WIDTH-1:0] yn1_temp;
-
+    
 	// 功能区
 	// 1 并行计算b*x_n  d*yn   cos(zn)
 	// 1.1 调用IP_float64_multiply计算b*x_n   
@@ -72,7 +72,7 @@ module Chaotic_equation_y#(
     );
 	
     IP_shift_register b_xn_dly (
-        .A(8'd130),      // input wire [7 : 0] A  130 = 149 - 15 -1
+        .A(8'd132),      // input wire [7 : 0] A  132 = 149 - 15 -1 +2
         .D({b_xn_valid,b_xn}),      // input wire [64 : 0] D
         .CLK(clk),  // input wire CLK
         .Q({dly_b_xn_valid, dly_b_xn})      // output wire [64 : 0] Q
@@ -92,7 +92,7 @@ module Chaotic_equation_y#(
     );
 
     IP_shift_register d_yn_dly (
-        .A(8'd130),      // input wire [7 : 0] A  130 = 149 - 15 - 1
+        .A(8'd132),      // input wire [7 : 0] A  132 = 149 - 15 - 1 + 2
         .D({d_yn_valid,d_yn}),      // input wire [64 : 0] D
         .CLK(clk),  // input wire CLK
         .Q({dly_d_yn_valid, dly_d_yn})      // output wire [64 : 0] Q

@@ -59,7 +59,7 @@ module Chaotic_equation_z
     );
     
     IP_shift_register zn1_dly (
-        .A(8'd213),      // input wire [7 : 0] A  213 = 244 - 26 - 5 -2 -3
+        .A(8'd215),      // input wire [7 : 0] A  215 = 244 - 26 - 5 -2 -3 + 2
         .D({zn1_temp_valid,zn1_temp}),      // input wire [64 : 0] D
         .CLK(clk),  // input wire CLK
         .Q({zn1_valid, zn1})      // output wire [64 : 0] Q

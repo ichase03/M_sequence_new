@@ -57,8 +57,11 @@ module tb_sincos_TOP(
 	);
 	
 	initial begin
-        #2000 rst_n = 1;    Theta_valid = 1; 	Theta = 64'h40091EB851EB851F;
-        #6000              Theta_valid = 1; 	Theta = 64'hBFF3333333333333;
+        #200 rst_n = 1;    Theta_valid = 1; 	Theta = 64'h40091EB851EB851F;	// 3.14
+		#20  Theta_valid = 0;
+        #2000              Theta_valid = 1; 	Theta = 64'hBFF3333333333333;	// -1.2
+		#10  Theta_valid = 0;
+		#2000              Theta_valid = 1; 	Theta = 64'h402E000000000000;	// 15
         // #1000                   MSEQ_output = 'd111111;para_K = 'd351;
         // #1000                   MSEQ_output = 'd18161;para_K = 'd1711;
         #6000 $finish;

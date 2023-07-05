@@ -64,7 +64,8 @@ module Chaotic_equation_x
 
     wire k0k1zn_valid;                      // 1.4
     wire signed [DATA_WIDTH-1:0] k0k1zn;    // 因为1.4延时最长，故不需要reg寄存，直接进入step2的计算
-                                          
+
+    // wire signed [DATA_WIDTH-1:0] dly_k2;                                     
     wire k0k1k2zn_valid;                    // 2
     wire signed [DATA_WIDTH-1:0] k0k1k2zn;
 
@@ -80,7 +81,7 @@ module Chaotic_equation_x
 
     // 功能区
     // -------------------------------------------------
-    // step1 并行计算a*yn  e*yn   zn*zn  k1*zn+k0   latency26
+    // step: 1 并行计算a*yn  e*yn   zn*zn  k1*zn+k0   latency26
     // 其中乘加模块k1*zn+k0延时最长，最后完成，故step2时，使用k0k1zn_valid作为输入有效信号
     // 1.1 计算a*yn    15 latency
     IP_float64_multiply a_MUL_yn (
@@ -95,7 +96,7 @@ module Chaotic_equation_x
     );
     
     IP_shift_register a_yn_dly (
-        .A(8'd197),      // input wire [7 : 0] A    197 = 11+15+26+149-1-1-1-1
+        .A(8'd199),      // input wire [7 : 0] A    199 = 11+15+26+149-1-1-1-1+2
         .D({a_yn_valid,a_yn}),      // input wire [64 : 0] D
         .CLK(clk),  // input wire CLK
         .Q({dly_a_yn_valid, dly_a_yn})      // output wire [64 : 0] Q
@@ -157,9 +158,10 @@ module Chaotic_equation_x
     // step1 end----------26latency----------------------------
 
     //---------------------------------------------------------
-    // step2 计算 k0 + k1*zn + k2 * zn *zn  
+    // step: 2 计算 k0 + k1*zn + k2 * zn *zn  
     // 其中k0+k1*zn  zn*zn已在step1完成，故只需一个乘加模块即可完成计算
     // 下一级时，使用k0k1k2zn_valid作为输入有效信号
+
     IP_float64_multiply_add calculate_k0k1k2zn (
         .aclk(clk),                                  // input wire aclk
         .aresetn(rst_n),                            // input wire aresetn
@@ -175,7 +177,7 @@ module Chaotic_equation_x
     // step2 end---26latency
 
     //------------------------------------
-    // step3 计算sin函数括号内的内容 ek0k1k2znyn = e*( k0 + k1*zn + k2*zn^2 )*yn
+    // step: 3 计算sin函数括号内的内容 ek0k1k2znyn = e*( k0 + k1*zn + k2*zn^2 )*yn
     IP_float64_multiply calculate_ek0k1k2znyn (
         .aclk(clk),                                  // input wire aclk
         .aresetn(rst_n),                            // input wire aresetn
@@ -189,7 +191,8 @@ module Chaotic_equation_x
     // step3 end---15latency
 
     //------------------------------------------------
-    //step4 计算sin（ step3 ）
+    // bug!!! 
+    //step: 4 计算sin（ step3 ）
     sincos_TOP 
 	#(
 		.DATA_WIDTH(DATA_WIDTH), //数据位宽须与 Floating-point IP 数据位宽匹配
@@ -202,7 +205,7 @@ module Chaotic_equation_x
 
 		.Theta_valid(ek0k1k2znyn_valid),
 		.Theta(ek0k1k2znyn),
-
+        
 		.sin_valid(sin_data_valid),
 		.sin(sin_data),
 		.cos_valid(),
@@ -211,10 +214,10 @@ module Chaotic_equation_x
     // step4 end --------
 
     //---------------------
-    // step5 计算xn1 = (a_yn_dly) + (c_dly) * (sin)
+    // step: 5 计算xn1 = (a_yn_dly) + (c_dly) * (sin)
     // 注意要对参数c单独做延时，以免错位
     IP_shift_register para_c_dly (
-        .A(8'd212),      // input wire [7 : 0] A    212 = 26+26+15+149 -1 -1 -1-1-1
+        .A(8'd214),      // input wire [7 : 0] A    212 = 26+26+15+149 -1 -1 -1-1-1 +2
         .D({0,c}),      // input wire [64 : 0] D
         .CLK(clk),  // input wire CLK
         .Q({0, c_dly})      // output wire [64 : 0] Q

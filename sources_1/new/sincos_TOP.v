@@ -140,7 +140,7 @@ Duffing_float_2_int2frac13 PHASE_float_2_int2frac13(
 );
 
 //36-Latency  CORDIC计算sinθ和cosθ
-CORDIC_sincos sincos_calcu (
+ip_cordic_sincos sincos_calcu (
   .aclk(clk),                                            // input wire aclk
   .aresetn(rst_n),                                       // input wire aresetn
   .s_axis_phase_tvalid(int2frac13_Theta_valid         ), // input wire s_axis_phase_tvalid

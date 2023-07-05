@@ -22,11 +22,11 @@
 
 module Chaotic_TOP #(
     parameter DATA_WIDTH = 'd64,                //数据位宽须与 Floating-point IP 数据位宽匹配
-    parameter Chaotic_System_Cycle = 'd242,     // 混沌系统计算一次的周期
-    parameter tao = 'h3FD3333333333333,         // 混沌系统参数
-    parameter k0  = 'h3FD3333333333333,
-    parameter k1  = 'h3FD3333333333333,
-    parameter k2  = 'h3FD3333333333333
+    parameter Chaotic_System_Cycle = 'd244,     // 混沌系统计算一次的周期
+    parameter tao = 'h3FD3333333333333,         // 混沌系统参数 0.3
+    parameter k0  = 'h3FB999999999999A,         // 混沌系统参数 0.1
+    parameter k1  = 'hC024000000000000,         // 混沌系统参数 -10.0
+    parameter k2  = 'h3FE0000000000000          // 混沌系统参数 0.5
 )(
     input clk,
     input rst_n,
@@ -123,7 +123,6 @@ IP_ROM para_rom (
     .douta({a,b,c,d,e})  // output wire [319 : 0] douta
 );
 
-
 // 例化存储混沌方程状态值x y z的RAM 
 IP_RAM xyz_ram (
     .clka(clk),    // input wire clka
@@ -135,7 +134,6 @@ IP_RAM xyz_ram (
     .addrb(para_rom_addra),  // input wire [7 : 0] addrb  ram和rom共用一个读地址
     .doutb({xn,yn,zn})  // output wire [191 : 0] doutb
 );
-
 
 Chaotic_Equations #(
     .DATA_WIDTH(DATA_WIDTH)  //数据位宽须与 Floating-point IP 数据位宽匹配

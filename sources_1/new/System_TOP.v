@@ -51,7 +51,7 @@ module System_TOP
     wire [31:0] Signal_Send;
 
 // 功能区
-// step1 例化混沌模块，生成混沌序列
+// step: 1 例化混沌模块，生成混沌序列
     Chaotic_TOP 
     #(
         .DATA_WIDTH(DATA_WIDTH)  //数据位宽须与 Floating-point IP 数据位宽匹配
@@ -67,7 +67,9 @@ module System_TOP
         .xyz_ram_w_addr(xyz_out_num)
     );
 
-// step2 将混沌信号拼合成所需的M序列输入信号，并控制M序列模块的选通
+// step: 2 将混沌信号拼合成所需的M序列输入信号，并控制M序列模块的选通
+// memo: 4位的MSEQ_din_valid最多控制4个M序列模型更新，
+//      如需更多的M序列模块，需修改MSEQ_control模块内MSEQ_din_valid信号位宽，同时拓展内部状态机的逻辑
 MSEQ_control
 #(
     .INPUT_DATA_WIDTH(INPUT_DATA_WIDTH), //! MSEQ模块需求的输入的数据MSEQ_din的位宽
@@ -87,7 +89,8 @@ MSEQ_control_inst
 );
 
 
- // step3 使用混沌序列作为M序列输入，输出随机数
+ // step: 3 使用混沌序列作为M序列输入，输出随机数
+ // memo: 如需例化更多的top_M_sequence模块，只需修改.MSEQ_din_vld ( MSEQ_din_valid[i]处连线即可
    top_M_sequence top_M_sequence_dut (
      .MSEQ_clk     ( clk     ),
      .MSEQ_rst_n   ( rst_n   ),
@@ -96,11 +99,11 @@ MSEQ_control_inst
      .MSEQ_output  ( MSEQ_output  )
    );
 
- // step4 DDS模块生成待调试信号
+ // step: 4 DDS模块生成待调试信号
  // 例化 DDS 模块
  assign DDS_signal = 32'h3F000000;		// 0.5
 
- // step5 信号调制
+ // step: 5 信号调制
  PRNs_Multiply_K PRNs_Multiply_K_inst(  
          .MSEQ_clk(clk) ,
          .MSEQ_rst_n(rst_n) ,
