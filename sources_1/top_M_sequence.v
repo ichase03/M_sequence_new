@@ -116,7 +116,7 @@ end endgenerate
       rst_cnt <= rst_cnt + 1'b1 ;
     end
   end
-
+      
 
 
 generate for (i_mseq = 0 ;i_mseq < OUTPUT_DATA_NUM ;i_mseq = i_mseq + 1 ) begin:M_SET

@@ -92,7 +92,6 @@ float_multiply float_multiply_PRNs_x_K (
 //      即将单精度浮点数PRNs_x_K_temp的指数位[30:23]的值减去26
 assign PRNs_x_K = {PRNs_x_K_temp[31],PRNs_x_K_temp[30:23]-26,PRNs_x_K_temp[22:0]};
 
-
 //-----------------------------------------------
 // 3 将PRNs_x_K同DDS信号进行调制
 // 3.1 加法调制

@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+// `timescale 1ns/1ps
 /*
 方程组顶层，3个混沌方程模块分别对应方程组3个维度
 */

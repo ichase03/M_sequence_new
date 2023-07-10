@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+// `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -137,9 +137,9 @@ module Chaotic_equation_y#(
     // 3 输出
     IP_shift_register yn1_dly (
         .A(8'd66),      // input wire [7 : 0] A  66 = 244-149-26 - 1 -2
-        .D({yn1_temp_valid,yn1_temp}),      // input wire [64 : 0] D
-        .CLK(clk),  // input wire CLK
-        .Q({yn1_valid, yn1})      // output wire [64 : 0] Q
-    );
+        .D({yn1_temp_valid,yn1_temp}), // input wire [64 : 0] D
+        .CLK(clk), // input wire CLK
+        .Q({yn1_valid, yn1}) // output wire [64 : 0] Q
+        );
     
 endmodule

@@ -1,4 +1,5 @@
-`timescale 1ns / 1ps
+
+// `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -20,7 +21,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module System_TOP
+module System_TOP 
 #(
     parameter DATA_WIDTH = 64,
     parameter INPUT_DATA_WIDTH = 288
@@ -101,7 +102,18 @@ MSEQ_control_inst
 
  // step: 4 DDS模块生成待调试信号
  // 例化 DDS 模块
- assign DDS_signal = 32'h3F000000;		// 0.5
+//  assign DDS_signal = 32'h3F000000;		// 0.5
+DDS DDS_inst(
+	.clk(clk),
+	.rst_n(rst_n),
+    .wave_shape(00), //00：正弦   01：方波   10：三角   11：三次谐波
+
+    .frq_word(32'd1000),   //频率控制字
+    .phase_init(32'd1111), //初始相位
+
+    .phase(), //相位累加器，原位宽扩大1位用于控制器计算周期数
+	.dds_out(DDS_signal)
+);
 
  // step: 5 信号调制
  PRNs_Multiply_K PRNs_Multiply_K_inst(  
@@ -115,4 +127,5 @@ MSEQ_control_inst
      );
 
 
+     
 endmodule

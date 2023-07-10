@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+// `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -141,15 +141,15 @@ Chaotic_Equations #(
     .clk(clk),
     .rst_n(rst_n),
 
-    .a(a),
-    .b(b),
-    .c(c),
-    .d(d),
-    .e(e),
+    .a  (a  ),
+    .b  (b  ),
+    .c  (c  ),
+    .d  (d  ),
+    .e  (e  ),
     .tao(tao),
-    .k0(k0),
-    .k1(k1),
-    .k2(k2),
+    .k0 (k0 ),
+    .k1 (k1 ),
+    .k2 (k2 ),
 
     .n_valid(n_valid),  // 输入有效信号
     .xn(xn), //混沌现态
