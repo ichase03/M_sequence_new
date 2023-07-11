@@ -161,9 +161,7 @@ module MSEQ_control#(
                 MSEQ_control_state <= IDLE;
             end
         endcase
-
         end
-
     end
 
     // 状态机第二段，控制MSEQ_din_valid

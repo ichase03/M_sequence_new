@@ -24,6 +24,7 @@ module top_M_sequence
   output [OUTPUT_DATA_NUM-1:0] MSEQ_output 
 );
 
+
 //! 定义区
 
 wire [OUTPUT_DATA_WIDTH - 1 : 0] MSEQ_m_origin      [OUTPUT_DATA_NUM -1 :0] ; //! 通过混沌序列截取的原始m序列输入
@@ -46,13 +47,6 @@ reg [9:0] rst_cnt = 0;
 //! 输出的数据重新打包为 OUTPUT_DATA_NUM 个位宽为 [OUTPUT_DATA_WIDTH -1 :0] 的数据
 genvar i_mseq ; 
 generate for (i_mseq = 0 ;i_mseq < OUTPUT_DATA_NUM ;i_mseq = i_mseq + 1 ) begin:CUT_DATA
-  
-  // 注：M序列的FD信号产生即更新原理如下：
-  // 注：将原始INPUT_DATA_WIDTH位的混沌序列，打包为OUTPUT_DATA_NUM个、每个OUTPUT_DATA_WIDTH位的小混沌信号MSEQ_m_origin
-  // 注：将MSEQ_m_origin存进fifo中，作为M序列的MSEQ_FD输入，控制M序列实时产生伪随机信号
-  // 注：新的混沌序列到来后，会产生新的MSEQ_m_origin，新的MSEQ_m_origin在FIFO_RD_EN_DELAY个延迟后，作为新的MSEQ_FD，产生新的M序列
-
-  // 注：混沌信号MSEQ_m_origin除开用作MSEQ_FD以外，还在截取后，转化为ROM的地址信号MSEQ_m_cut_and_add
 
   //! 获取原始m序列
     assign MSEQ_m_origin[i_mseq] = MSEQ_din [i_mseq * OUTPUT_DATA_WIDTH +: OUTPUT_DATA_WIDTH] ;
@@ -62,20 +56,20 @@ generate for (i_mseq = 0 ;i_mseq < OUTPUT_DATA_NUM ;i_mseq = i_mseq + 1 ) begin:
       MSEQ_m_cut_and_add[i_mseq] <= MSEQ_m_origin[i_mseq][OUTPUT_DATA_WIDTH-1 -: ROM_ADDR_WIDHT] + i_mseq; 
     end
 
-  //! 延迟ID信号,FIFO本身延迟为1 cycle 
+  //! 延迟ID信号,FIFO本身延迟为1 cycle
 
     fifo_cut_delay fifo_cut_data_delay
     (
       .clk   (MSEQ_clk                             ),
       .srst  (!MSEQ_rst_n                          ),
       .empty (                                     ),
-      .din   (MSEQ_m_origin[i_mseq]                ),
+      .din   (MSEQ_m_origin[i_mseq]                 ),
       .wr_en (MSEQ_din_vld                         ),
       .rd_en (MSEQ_fifo_rd_en_r[FIFO_RD_EN_DELAY-1]),
       .dout  (MSEQ_FD[i_mseq]                       ),
       .valid (MSEQ_FD_vld[i_mseq]                   ) 
     );
-    
+  
 end endgenerate
 
 //! step1-2: 读信号的延迟
@@ -91,7 +85,7 @@ end endgenerate
 
 generate for (i_mseq = 0 ;i_mseq < OUTPUT_DATA_NUM ;i_mseq = i_mseq + 2 ) begin:ROM_SET
 
-  rom_M_sequence rom_M_sequence
+  rom_M_sequence_new rom_M_sequence
   (
     .clka   (MSEQ_clk                    ),
     .addra (MSEQ_m_cut_and_add[i_mseq ]  ),
@@ -116,7 +110,7 @@ end endgenerate
       rst_cnt <= rst_cnt + 1'b1 ;
     end
   end
-      
+
 
 
 generate for (i_mseq = 0 ;i_mseq < OUTPUT_DATA_NUM ;i_mseq = i_mseq + 1 ) begin:M_SET

@@ -25,10 +25,10 @@ module tb_System_TOP(
 
     reg clk = 'd1;
     reg rst_n = 'd0;
-    reg calcu_ctrl = 'd1;
+    wire [15:0] signal_send;
 
     always #10 clk = !clk;
-    always #20 calcu_ctrl = !calcu_ctrl;
+    // always #20 calcu_ctrl = !calcu_ctrl;
 
     initial begin
         #2000 rst_n = 'd1;
@@ -43,16 +43,7 @@ module tb_System_TOP(
     (
         .clk(clk),
         .rst_n(rst_n),
-        .calcu_ctrl(calcu_ctrl)
+        .Signal_Send(signal_send)
     );
-
-
-
-
-
-
-
-
-
 
 endmodule
