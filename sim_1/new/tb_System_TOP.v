@@ -25,7 +25,7 @@ module tb_System_TOP(
 
     reg clk = 'd1;
     reg rst_n = 'd0;
-    wire [15:0] signal_send;
+    wire [31:0] signal_send;
 
     always #10 clk = !clk;
     // always #20 calcu_ctrl = !calcu_ctrl;

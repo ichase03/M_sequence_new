@@ -28,13 +28,15 @@ module Signal_Modulation#(
     input [OUTPUT_DATA_WIDTH-1:0] MSEQ_signal,
     input [OUTPUT_DATA_WIDTH-1:0] para_K,
     input [15:0] DDS_signal,
-    output [31:0] Signal_Send
+    output reg [31:0] Signal_Send,
+    output reg Signal_Send_valid
     );
 
     wire [31:0] MSEQ_mul_K;                   // MSEQ_signal*para_K的结果
-    reg [31:0] DDS_signal_uint32;               // 暂存32位的DDS_signal信号，扩大1024倍并延时一拍
+    reg [31:0] DDS_signal_uint32;             // 暂存32位的DDS_signal信号，扩大1024倍并延时一拍
     wire [31:0] Signal_Send_uint32;
     wire [31:0] Signal_Send_float32;
+    wire Signal_Send_float32_valid;
 
     // 计算MSEQ_signal*para_K
     IP_uint16_mult uint16_mult (
@@ -64,13 +66,24 @@ module Signal_Modulation#(
 
     IP_fix_to_float uint32_to_float32 (
         .aclk                (MSEQ_clk), // input wire aclk
-        .s_axis_a_tvalid     ('d1),            // input wire s_axis_a_tvalid
+        .s_axis_a_tvalid     (MSEQ_rst_n),            // input wire s_axis_a_tvalid
         .s_axis_a_tdata      (Signal_Send_uint32), // input wire [31 : 0] s_axis_a_tdata
-        .m_axis_result_tvalid(), // output wire m_axis_result_tvalid
+        .m_axis_result_tvalid(Signal_Send_float32_valid), // output wire m_axis_result_tvalid
         .m_axis_result_tdata (Signal_Send_float32) // output wire [31 : 0] m_axis_result_tdata
     );
-
+    
     // 将Signal_Send_float32缩放到0————（1+k）之间
-    assign Signal_Send = {Signal_Send_float32[31],Signal_Send_float32[30:23]-10-16,Signal_Send_float32[22:0]};
-
+    // assign Signal_Send_temp = {Signal_Send_float32[31],Signal_Send_float32[30:23]-10-16,Signal_Send_float32[22:0]};
+    // 寄存器输出
+    always@(posedge MSEQ_clk or negedge MSEQ_rst_n)
+    begin
+        if(!MSEQ_rst_n) begin
+            Signal_Send_valid <= 'd0;
+            Signal_Send <= 'd0;
+        end
+        else begin
+            Signal_Send_valid <= Signal_Send_float32_valid;
+            Signal_Send <= {Signal_Send_float32[31],Signal_Send_float32[30:23]-10-16,Signal_Send_float32[22:0]};
+        end
+    end
 endmodule
